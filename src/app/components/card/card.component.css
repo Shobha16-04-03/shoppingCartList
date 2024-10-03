@@ -1,0 +1,56 @@
+.card-title, .price{
+    margin-left: 10px;
+}
+
+.dynamic-width{
+    width: 20% !important;
+}
+.main{
+    width: 99%;
+}
+
+.sort{
+    width: 300px;
+}
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 3rem; /* Adjust based on font-size */
+  }
+  
+ .fa-plus{
+
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 10px;
+}
+
+.card-img-top{
+    width: 250px;
+    height: 250px;
+}
+
+
+.search{
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+.pagination {
+    float: inline-end;
+  }
+
+  /* .main{
+    margin-left: 100px;
+  } */
+
+  button.close-button {
+    margin-left: -37px;
+    border: none;
+    background: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    }

@@ -1,0 +1,55 @@
+<div class="container-fluid main">
+    <div class="row mb-3 mt-3">
+        <div class="col-md-12 col-xl-12 col-12 main">
+
+            <div class="row p-2">
+                <div class="col-sm-6">
+
+                    <input type="text" class="search" placeholder="search" (input)="search()" [(ngModel)]="searchQuery"
+                        name="searchQuery" />
+                    <button type="button" class="close-button" *ngIf="searchQuery" (click)="clear()">×</button>
+                </div>
+                <!-- <input type="text" name="search" id="search"> -->
+                <div class="col-sm-6 sort">
+                    <ng-select (click)="sort('data')" required [searchable]="true" (change)="productList(1)"
+                        [clearable]="false" name="sort" id="type" placeholder="Select Template"
+                        [(ngModel)]="selectedType">
+                        <ng-option *ngFor="let item of data" [value]="item">
+                            {{item.name}}
+                        </ng-option>
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="row mb-3 mt-3">
+
+                <div class="col-xl-2 col-lg-2 col-md-2 col-12 p-1 dynamic-width"
+                    *ngFor="let data of product|  paginate: { itemsPerPage: tableSize, currentPage: currentPage, totalItems:count } , let i=index">
+
+                    <div class="card mb-3 mt-3">
+                        <!-- <p>{{data.avg_rating}}</p> -->
+                        <img [src]="data.item_image" [alt]="data.item_name" class="card-img-top">
+                        <p class="card-title" [title]="data.item_name">{{data.item_name}}</p>
+                        <p class="price ml-3">{{data.item_variants[0].item_price}}</p>
+                        <div class="row p-2">
+                            <div class="col-sm-6">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="col-sm-6">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <span *ngIf="count == 0" class="notFound text-center">No Record Found</span>
+            </div>
+            <div class="pagination">
+
+                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="productList($event)"
+                    class="pagination">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
